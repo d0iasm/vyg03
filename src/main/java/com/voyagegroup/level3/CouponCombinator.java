@@ -16,13 +16,15 @@ public class CouponCombinator {
         }
 
         SetMenu tSetMenu = new SetMenu(aMPizzaNumber, aLPizzaNumber, aSideMenus, aIsWorkdayLunch);
-
         for (int i = 0; i < 4; i++) {
             CouponContext tCouponContext = new CouponContext(i, tHasPizza);
             for (int j = 0; j < tCouponContext.getPayTimes(aHadCoupon[i]); j++) {
                 tPayAmount -= tCouponContext.getPayAmount();
                 if (0 > tPayAmount) {
-                    return tUsedCoupon;
+                    if(tPayAmount < aTotalAmount - tSetMenu.discount()){
+                        return tUsedCoupon;
+                    }
+                    return new int[]{0, 0, 0};
                 }
                 tUsedCoupon[i]++;
             }
