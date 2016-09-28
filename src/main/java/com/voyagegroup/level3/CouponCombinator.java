@@ -21,7 +21,7 @@ public class CouponCombinator {
             for (int j = 0; j < tCouponContext.getPayTimes(aHadCoupon[i]); j++) {
                 tPayAmount -= tCouponContext.getPayAmount();
                 if (0 > tPayAmount) {
-                    if(tPayAmount >= aTotalAmount - tSetMenu.discount()){
+                    if (tPayAmount >= aTotalAmount - tSetMenu.discount()) {
                         return new int[]{0, 0, 0, 0};
                     }
                     return tUsedCoupon;
@@ -30,7 +30,7 @@ public class CouponCombinator {
             }
         }
 
-        if(tPayAmount >= aTotalAmount - tSetMenu.discount()){
+        if (tPayAmount >= aTotalAmount - tSetMenu.discount()) {
             return new int[]{0, 0, 0, 0};
         }
         return tUsedCoupon;
